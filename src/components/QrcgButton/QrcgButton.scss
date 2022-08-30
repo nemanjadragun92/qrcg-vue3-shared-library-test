@@ -1,0 +1,314 @@
+$sizes: xsm, sm, md, lg, xlg;
+// Styles for specific size
+@each $size in $sizes {
+  .qrcg-button--#{$size} {
+    @apply text-btn-#{$size};
+    @if $size == 'xsm' {
+      @apply px-[8px] py-[3.5px]; // Button padding for xsm
+      // Size for spinner for xsm
+      &.qrcg-button--loading {
+        svg {
+          @apply w-[12px] h-[12px];
+        }
+      }
+      &.qrcg-button__icon {
+        @apply gap-[4.5px];
+        &--prepend {
+          @apply pl-[6.5px];
+        }
+        &--append {
+          @apply pr-[6.5px];
+        }
+      }
+    } @else if $size == 'sm' {
+      @apply px-[12px] py-[5px]; // Button padding for sm
+      // Size for spinner for sm
+      &.qrcg-button--loading {
+        svg {
+          @apply w-[12px] h-[12px];
+        }
+      }
+      &.qrcg-button__icon {
+        @apply gap-[6.5px];
+        &--prepend {
+          @apply pl-[8.5px];
+        }
+        &--append {
+          @apply pr-[8.5px];
+        }
+      }
+    } @else if $size == 'md' {
+      @apply px-[16px] py-[7px]; // Button padding for md
+      // Size for spinner for md
+      &.qrcg-button--loading {
+        svg {
+          @apply w-[16px] h-[16px];
+        }
+      }
+      &.qrcg-button__icon {
+        @apply gap-[8.67px];
+        &--prepend {
+          @apply pl-[10.67px];
+        }
+        &--append {
+          @apply pr-[10.67px];
+        }
+      }
+    } @else if $size == 'lg' {
+      @apply px-[20px] py-[9px]; // Button padding for lg
+      // Size for spinner for lg
+      &.qrcg-button--loading {
+        svg {
+          @apply w-[20px] h-[20px];
+        }
+      }
+      &.qrcg-button__icon {
+        @apply gap-[8.83px];
+        &--prepend {
+          @apply pl-[12.83px];
+        }
+        &--append {
+          @apply pr-[12.83px];
+        }
+      }
+    } @else if $size == 'xlg' {
+      @apply px-[24px] py-[11px]; // Button padding for xlg
+      // Size for spinner for xlg
+      &.qrcg-button--loading {
+        svg {
+          @apply w-[24px] h-[24px];
+        }
+      }
+      &.qrcg-button__icon {
+        @apply gap-[13px];
+        &--prepend {
+          @apply pl-[13px];
+        }
+        &--append {
+          @apply pr-[13px];
+        }
+      }
+    }
+  }
+}
+.qrcg-button {
+  @apply font-primary cursor-pointer;
+  @apply rounded-button-primary;
+  @apply border border-transparent;
+  &--disabled {
+    @apply cursor-not-allowed;
+  }
+  &--uppercase {
+    @apply uppercase;
+  }
+  &--fontBold {
+    @apply font-bold;
+  }
+  &--block {
+    @apply w-full flex items-center justify-center;
+  }
+  &--loading {
+    @apply cursor-wait;
+    & > span {
+      @apply invisible h-0 block;
+    }
+  }
+  &__icon {
+    @apply flex items-center;
+  }
+}
+.qrcg-button--primary {
+  @apply bg-primary/primary;
+  @apply text-neutral/surface;
+  &.qrcg-button--dark {
+    @apply bg-neutral/tint90;
+    @apply text-navy/dark;
+  }
+  &:not(.qrcg-button--disabled):not(.qrcg-button--loading) {
+    &:hover {
+      background: theme('colors.button.primary-hover');
+      &.qrcg-button--dark {
+        background: theme('colors.button.dark-primary-hover');
+      }
+      &.qrcg-button--outline {
+        background: transparent;
+        @apply bg-primary/primary bg-opacity-[0.08];
+      }
+    }
+    &:focus {
+      background: theme('colors.button.primary-focus');
+      &.qrcg-button--dark {
+        background: theme('colors.button.dark-primary-focus');
+      }
+      &.qrcg-button--outline {
+        background: transparent;
+        @apply bg-primary/primary bg-opacity-[0.16];
+      }
+    }
+    &:active {
+      background: theme('colors.button.primary-active');
+      &.qrcg-button--dark {
+        background: theme('colors.button.dark-primary-active');
+      }
+      &.qrcg-button--outline {
+        background: transparent;
+        @apply bg-primary/primary bg-opacity-[0.24];
+      }
+    }
+  }
+  &.qrcg-button--loading {
+    @apply bg-neutral/tint90;
+    svg {
+      path:first-child {
+        fill: theme('colors.neutral/tint80');
+      }
+    }
+    &.qrcg-button--dark {
+      @apply bg-white bg-opacity-[0.12];
+      svg {
+        path:first-child {
+          fill: theme('colors.button.dark-primary-loading-circle');
+        }
+      }
+    }
+  }
+  &.qrcg-button--outline {
+    @apply bg-transparent;
+    @apply border-primary/primary;
+    @apply text-primary/primary;
+    &.qrcg-button--dark {
+      @apply border-neutral/surface;
+      @apply text-neutral/surface;
+    }
+    &.qrcg-button--loading {
+      @apply bg-white;
+      @apply border-disabled/bg-lighter border-opacity-[0.12];
+      &.qrcg-button--dark {
+        @apply bg-transparent;
+        @apply border-white border-opacity-[0.12];
+      }
+    }
+    &.qrcg-button--disabled {
+      @apply bg-transparent;
+      @apply border-disabled/bg-lighter border-opacity-[0.12];
+      @apply text-disabled/bg-lighter text-opacity-[0.32];
+      &.qrcg-button--dark {
+        @apply bg-transparent;
+        @apply border-white border-opacity-[0.12];
+        @apply text-white text-opacity-[0.32];
+      }
+    }
+  }
+  &.qrcg-button--disabled {
+    @apply bg-disabled/bg-lighter bg-opacity-[0.12];
+    @apply text-disabled/bg-lighter text-opacity-[0.32];
+    &.qrcg-button--dark {
+      @apply border-white border-opacity-[0.12];
+      @apply text-white text-opacity-[0.32];
+    }
+  }
+}
+.qrcg-button--danger {
+  @apply bg-begonia/red;
+  @apply text-neutral/surface;
+  &.qrcg-button--dark {
+    @apply bg-begonia/light;
+    @apply text-begonia/red;
+  }
+  &:not(.qrcg-button--disabled):not(.qrcg-button--loading) {
+    &:hover {
+      background: theme('colors.button.danger-hover');
+      &.qrcg-button--dark {
+        background: theme('colors.button.dark-danger-hover');
+        &.qrcg-button--outline {
+          background: transparent;
+          @apply bg-begonia/light bg-opacity-[0.08];
+        }
+      }
+      &.qrcg-button--outline {
+        background: transparent;
+        @apply bg-begonia/red bg-opacity-[0.08];
+      }
+    }
+    &:focus {
+      background: theme('colors.button.danger-focus');
+      &.qrcg-button--dark {
+        background: theme('colors.button.dark-danger-focus');
+        &.qrcg-button--outline {
+          background: transparent;
+          @apply bg-begonia/light bg-opacity-[0.16];
+        }
+      }
+      &.qrcg-button--outline {
+        background: transparent;
+        @apply bg-begonia/red bg-opacity-[0.16];
+      }
+    }
+    &:active {
+      background: theme('colors.button.danger-active');
+      &.qrcg-button--dark {
+        background: theme('colors.button.dark-danger-active');
+        &.qrcg-button--outline {
+          background: transparent;
+          @apply bg-begonia/light bg-opacity-[0.24];
+        }
+      }
+      &.qrcg-button--outline {
+        background: transparent;
+        @apply bg-begonia/red bg-opacity-[0.24];
+      }
+    }
+  }
+  &.qrcg-button--loading {
+    @apply bg-neutral/tint90;
+    svg {
+      path:first-child {
+        fill: theme('colors.neutral/tint80');
+      }
+    }
+    &.qrcg-button--dark {
+      @apply bg-white bg-opacity-[0.12];
+      svg {
+        path:first-child {
+          fill: theme('colors.button.dark-danger-loading-circle');
+        }
+      }
+    }
+  }
+  &.qrcg-button--outline {
+    @apply bg-transparent;
+    @apply border-begonia/red;
+    @apply text-begonia/red;
+    &.qrcg-button--dark {
+      @apply border-begonia/light;
+      @apply text-begonia/light;
+    }
+    &.qrcg-button--loading {
+      @apply bg-white;
+      @apply border-disabled/bg-lighter border-opacity-[0.12];
+      &.qrcg-button--dark {
+        @apply bg-transparent;
+        @apply border-white border-opacity-[0.12];
+        @apply text-white text-opacity-[0.32];
+      }
+    }
+    &.qrcg-button--disabled {
+      @apply bg-transparent;
+      @apply border-disabled/bg-lighter border-opacity-[0.12];
+      @apply text-disabled/bg-lighter text-opacity-[0.32];
+      &.qrcg-button--dark {
+        @apply bg-transparent;
+        @apply border-white border-opacity-[0.12];
+        @apply text-white text-opacity-[0.32];
+      }
+    }
+  }
+  &.qrcg-button--disabled {
+    @apply bg-disabled/bg-lighter bg-opacity-[0.12];
+    @apply text-disabled/bg-lighter text-opacity-[0.32];
+    &.qrcg-button--dark {
+      @apply bg-white bg-opacity-[0.12];
+      @apply text-white text-opacity-[0.24];
+    }
+  }
+}
