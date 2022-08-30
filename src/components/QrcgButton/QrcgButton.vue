@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, useSlots } from "vue";
+import { computed, onMounted, useSlots } from "vue";
 
 const slots = useSlots();
 
@@ -120,6 +120,12 @@ const emit = defineEmits(["onClick"]);
 function onClick($event: Event) {
   emit("onClick", $event);
 }
+
+onMounted(() => {
+  console.log("Slots", slots);
+  console.log('slots["icon-append"]', slots["icon-append"]);
+  console.log('slots["icon-append"]', slots["icon-append"]);
+});
 </script>
 
 <style lang="scss" scoped src="./QrcgButton.scss" />
