@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nemanjadragun92"
+    "url": "https://github.com/nemanjadragun92/qrcg-vue3-shared-library-test"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/nemanjadragun92"
