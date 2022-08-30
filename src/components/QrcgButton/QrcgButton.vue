@@ -93,8 +93,8 @@ const props = defineProps({
 
 const className = "qrcg-button";
 
-const hasIconPrepend = computed(() => !!slots["icon-prepend"] || false);
-const hasIconAppend = computed(() => !!slots["icon-append"] || false);
+const hasIconPrepend = computed(() => slots["icon-prepend"] !== undefined);
+const hasIconAppend = computed(() => slots["icon-append"] !== undefined);
 
 const classes = computed(() => {
   return [
@@ -109,9 +109,9 @@ const classes = computed(() => {
       [`${className}--uppercase`]: props.uppercase,
       [`${className}--fontBold`]: props.fontBold,
       [`${className}--dark`]: props.dark,
-      [`${className}__icon`]: hasIconPrepend.value || hasIconAppend,
-      [`${className}__icon--prepend`]: hasIconPrepend,
-      [`${className}__icon--append`]: hasIconAppend,
+      [`${className}__icon`]: hasIconPrepend.value || hasIconAppend.value,
+      [`${className}__icon--prepend`]: hasIconPrepend.value,
+      [`${className}__icon--append`]: hasIconAppend.value,
     },
   ];
 });
@@ -121,12 +121,6 @@ const emit = defineEmits(["onClick"]);
 function onClick($event: Event) {
   emit("onClick", $event);
 }
-
-onMounted(() => {
-  console.log("Slots", slots);
-  console.log('slots["icon-append"]', slots["icon-append"]);
-  console.log('slots["icon-append"]', slots["icon-append"]);
-});
 </script>
 
 <style lang="scss" scoped src="./QrcgButton.scss" />

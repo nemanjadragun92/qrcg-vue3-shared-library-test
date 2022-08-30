@@ -17,10 +17,11 @@
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "emitDeclarationOnly": true
   },
-  "include": ["vite.config.*", "env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["node_modules", "src/**/*.spec.ts", "src/router/**"],
+  "include": ["vite.config.*", "env.d.ts", "src/**/components/*.vue", "src/**/composables/*.ts"],
+  "exclude": ["node_modules", "src/**/*.spec.ts", "src/**/*.stories.js", "src/router/**", "src/stories/**"],
   "references": [
     {
       "path": "./tsconfig.config.json"
