@@ -28,7 +28,8 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build:old": "run-p type-check build-only",
+    "build": "vite build && vue-tsc --emitDeclarationOnly && mv dist/src dist/types",
     "build:lib": "vite build && vue-tsc --emitDeclarationOnly && mv dist/src dist/types",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
